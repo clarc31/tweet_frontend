@@ -1,0 +1,10 @@
+{
+  "name": "tweet_frontend",
+  "version": "1.0.0",
+  "description": "front hackatweet",
+  "main": "index.js",
+  "repository": "https://github.com/clarc31/tweet_frontend.git",
+  "author": "Christian Larcher <cdrc.larcher@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
