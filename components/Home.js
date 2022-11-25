@@ -6,18 +6,26 @@ import Image from 'next/image';
 import { Modal } from 'antd';
 // import pour états d'activation des fenêtres signup et signin
 import { useEffect, useState } from 'react';
+// import envoi/réception store
+import { useDispatch, useSelector } from 'react-redux';
 
 // import des composants
 import SignUp from './SignUp';
 
+// import des reducers
+import {closeSignUp} from '../reducers/closeSignUp'
+
 function Home() {
+  //const dispatch = useDispatch();
+  //const isSignUpVisible = useSelector ((state)=> state.closeSignUp.value);
+
   // Etat pour cacher/afficher fenêtre signup
   const [isSignUpVisible, setIsSignUpVisible] = useState(false);
   const [isSignInVisible, setIsSignInVisible] = useState(false);
 
   // Action au onClick() de la div <button>
-    console.log('Home, L21', isSignUpVisible) //<----------------------------------
-    console.log('Home, L21', isSignInVisible) //<----------------------------------
+    console.log('Home, SignUp', isSignUpVisible) //<----------------------------------
+    console.log('Home, SignIn', isSignInVisible) //<----------------------------------
     
     let modalSignUp;
     if(isSignUpVisible) {
@@ -27,6 +35,7 @@ function Home() {
         </div>
       )
     }
+
   console.log('Home, L28', modalSignUp) //<-----------------------------------------
   /*
      <p>Create your Hackatweet account</p>
@@ -44,11 +53,13 @@ function Home() {
           <Image src={"/twitter_logo.png"} width={50} height={37}/>
         </div>
 
-        {isSignUpVisible && <div id="react-modals">
-          <Modal getContainer='#react-modals' className={styles.modal} closable={false} visible={isSignUpVisible} footer={null}>
+       {isSignUpVisible && 
+       <div id="react-modals">
+          <Modal getContainer='#react-modals' className={styles.modal} closable={false} open={isSignUpVisible} footer={null}>
             {modalSignUp}
-          </Modal>
-        </div>}
+          </Modal> 
+          </div>
+          } 
 
         <div className={styles.haut}>
           <div className={styles.bigletters}>
@@ -71,7 +82,9 @@ function Home() {
 
 export default Home;
 
-// <Image className= {styles.wall} src={"/imglogin.png"} width={670} height={964}/>
+//           <button className={styles.btnsignup} onClick={()=>setIsSignUpVisible(!isSignUpVisible)}>Sign up</button>
+
+
 
 /* initial
 import styles from '../styles/Home.module.css';

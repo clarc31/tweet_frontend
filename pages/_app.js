@@ -5,9 +5,13 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 // import composants
 import SignUp from '../components/SignUp';
+// Forçage style css pour modal
+import 'antd/dist/antd.css'
+// import reducers
+import closeSignUp from '../reducers/closeSignUp';
 
 const store = configureStore({
-  reducer: { }, // init reducer: { bookmarks, user }, <---------------- noter reducer qd ils seront faits
+  reducer: { closeSignUp }, // init reducer: { bookmarks, user }, <---------------- noter reducer qd ils seront faits
 });
 
 function App({ Component, pageProps }) {
