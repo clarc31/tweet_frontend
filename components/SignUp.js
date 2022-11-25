@@ -1,16 +1,37 @@
 // imports à réaliser
+import { useDispatch } from 'react-redux';
 import styles from '../styles/SignUp.module.css';
 import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 
-// 
-import { useDispatch, useSelector } from 'react-redux';
-import {closeSignUp} from '../reducers/closeSignUp'
+import { login } from '../reducers/users';
+import Tweet from './Tweet';
+import Link from 'next/link'
+import {useRouter} from 'next/router';
+
+
 
 function SignUp() {
     const [signUpFirstName, setSignUpFirstName] = useState('');
 	const [signUpUsername, setSignUpUsername] = useState('');
 	const [signUpPassword, setSignUpPassword] = useState('');
+
+    const dispatch = useDispatch();
+    const router = useRouter();
+
+    const handleRegister=() => {
+        fetch('http://localhost:3000/users/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: signUpUsername, firstname: signUpFirstName, password: signUpPassword }),
+        }).then(response => response.json())
+            .then(data => {
+                if(data.result) {
+                    dispatch(login({token: data.token, username: signUpUsername, canDelete: data.canDelete }))
+                    //router.push('/tweet')
+                }              
+            })
+    }
 /*
     const delRegister =() => {
         dispatch(closeSignUpWindow(false));

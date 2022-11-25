@@ -5,13 +5,14 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 // import composants
 import SignUp from '../components/SignUp';
+import Tweet from '../components/Tweet';
 // Forçage style css pour modal
 import 'antd/dist/antd.css'
 // import reducers
-import closeSignUp from '../reducers/closeSignUp';
+import users from '../reducers/users';
 
 const store = configureStore({
-  reducer: { closeSignUp }, // init reducer: { bookmarks, user }, <---------------- noter reducer qd ils seront faits
+  reducer: { users }, // init reducer: { bookmarks, user }, <---------------- noter reducer qd ils seront faits
 });
 
 function App({ Component, pageProps }) {

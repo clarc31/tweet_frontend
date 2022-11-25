@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './SignUp';
 
 // import des reducers
-import {closeSignUp} from '../reducers/closeSignUp'
+//import {closeSignUp} from '../reducers/closeSignUp'
 
 function Home() {
   //const dispatch = useDispatch();
